@@ -6,7 +6,8 @@
 ## What's for Future
 
 - Consider ejecting [Create React App] for greater control over Webpack configuration, linting, etc
-- Rewrite UI components within the library folder as per design styleguide, rather than just exporting from [React Bootstrap]
+- Ditch [React Bootstrap] and re-write UI components as a sepearate library
+- Extra a theme into a separate library that can be applied to the application (e.g. styled-components)
 
 ## To start the app
 
