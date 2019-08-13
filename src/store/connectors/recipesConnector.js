@@ -7,7 +7,7 @@ import lodashGet from "lodash.get";
 
 const mapStateToProps = state => ({
   recipes: lodashGet(state, "recipes.list"),
-  isUpdating: lodashGet(state, "recipes.isUpdating"),
+  isFetching: lodashGet(state, "recipes.isFetchingData"),
   error: lodashGet(state, "recipes.error")
 });
 

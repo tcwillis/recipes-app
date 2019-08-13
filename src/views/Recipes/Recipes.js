@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import Layout from "components/Layout";
 
@@ -7,30 +7,37 @@ class Recipes extends Component {
     this.props.getRecipes();
   }
   render() {
-    const hasError = this.props.error ? true : false;
-    const errorMessage = this.props.error
-      ? this.props.error.message
-      : "UNSPECIFIED ERROR";
+    const { error, recipes, isFetching } = this.props;
+    const hasError = error ? true : false;
+    const errorMessage = error ? error.message : "UNSPECIFIED ERROR";
+
     return (
       <Layout className="recipes">
-        {hasError && <div>{errorMessage}</div>}
         <h1>Recipes</h1>
-        {JSON.stringify(this.props.recipes)}
+        {isFetching ? (
+          <div data-ref={"fetching"}>Fetching recipes...</div>
+        ) : (
+          <Fragment>
+            {hasError && <div>{errorMessage}</div>}
+            {JSON.stringify(recipes)}
+          </Fragment>
+        )}
       </Layout>
     );
   }
 }
 
 Recipes.propTypes = {
-  isUpdating: PropTypes.bool.isRequired,
+  isFetching: PropTypes.bool.isRequired,
   error: PropTypes.object,
   getRecipes: PropTypes.func
 };
 
 Recipes.defaultProps = {
-  isUpdating: false,
+  isFetching: false,
   error: {},
   getRecipes: () => {}
 };
 
+export { Recipes };
 export default Recipes;

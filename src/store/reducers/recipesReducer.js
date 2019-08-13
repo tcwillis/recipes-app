@@ -7,7 +7,8 @@ import {
 
 const INITIAL_STATE = {
   list: [],
-  error: null
+  error: null,
+  isFetchingData: null
 };
 
 function recipes(state = INITIAL_STATE, action) {
@@ -18,7 +19,7 @@ function recipes(state = INITIAL_STATE, action) {
       if (action.payload === FETCH_RECIPES) {
         return {
           ...state,
-          isLoadingData: true
+          isFetchingData: true
         };
       }
       break;
@@ -26,7 +27,7 @@ function recipes(state = INITIAL_STATE, action) {
       if (action.payload === FETCH_RECIPES) {
         return {
           ...state,
-          isLoadingData: false
+          isFetchingData: false
         };
       }
       break;

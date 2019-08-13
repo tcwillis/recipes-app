@@ -1,14 +1,19 @@
 import React from "react";
-import Home from "./Home";
+import { Recipes } from "./Recipes";
 import { shallow } from "enzyme";
 
-describe("<Home />", () => {
+describe("<Recipes />", () => {
   it("should render without crashing", () => {
-    shallow(<Home />);
+    shallow(<Recipes />);
   });
 
-  it("should display a message", () => {
-    const wrapper = shallow(<Home />);
-    expect(wrapper.find("h1").text()).toEqual("Home page");
+  it("should display a title", () => {
+    const wrapper = shallow(<Recipes />);
+    expect(wrapper.find("h1").text()).toEqual("Recipes");
+  });
+
+  it("should display a fetching message", () => {
+    const wrapper = shallow(<Recipes isFetching={true} />);
+    expect(wrapper.find("[data-ref='fetching']").length).toEqual(1);
   });
 });

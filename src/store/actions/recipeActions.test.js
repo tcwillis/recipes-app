@@ -8,13 +8,13 @@ import sinon from "sinon";
 
 const mockStore = configureMockStore(middlewares);
 
-describe("async actions", () => {
+describe("Recipe Actions", () => {
   const sandbox = sinon.createSandbox();
   afterEach(() => {
     sandbox.restore();
   });
 
-  it("creates FETCH_TODOS_SUCCESS when fetching todos has been done", () => {
+  it("should dispatch the relevane actions once fetching recipes has been done", () => {
     const resolved = new Promise(r => r({ data: recipesMock }));
     sandbox.stub(axios, "request").returns(resolved);
 
