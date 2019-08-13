@@ -1,9 +1,14 @@
 import axios from "axios";
 import Config from "../../app/config";
+import { routerMiddleware } from "connected-react-router";
+import thunk from "redux-thunk";
+import { createBrowserHistory } from "history";
 import { API } from "../actionTypes";
 import { apiError, apiStart, apiEnd } from "../actions/apiActions";
 
-const apiMiddleware = ({ dispatch }) => next => action => {
+export const history = createBrowserHistory();
+
+const apiMiddleware = ({ dispatch }) => next => async action => {
   next(action);
 
   if (action.type !== API) return;
@@ -19,7 +24,7 @@ const apiMiddleware = ({ dispatch }) => next => action => {
     dispatch(apiStart(label));
   }
 
-  axios
+  await axios
     .request({
       url,
       method,
@@ -39,4 +44,4 @@ const apiMiddleware = ({ dispatch }) => next => action => {
     });
 };
 
-export default apiMiddleware;
+export default [thunk, routerMiddleware(history), apiMiddleware];

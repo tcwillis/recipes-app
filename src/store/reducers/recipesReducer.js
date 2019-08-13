@@ -1,15 +1,13 @@
 import {
   SET_RECIPES,
-  FETCH_RECIPES,
   API_START,
-  API_END,
-  FETCH_RECIPES_FAILURE
-} from "../actionTypes";
+  FETCH_RECIPES,
+  API_END
+} from "store/actionTypes";
 
 const INITIAL_STATE = {
   list: [],
-  error: null,
-  isLoadingData: null
+  error: null
 };
 
 function recipes(state = INITIAL_STATE, action) {

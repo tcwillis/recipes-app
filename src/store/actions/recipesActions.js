@@ -6,10 +6,10 @@ export const setRecipes = recipes => ({
   payload: { recipes }
 });
 
-export function getRecipes() {
+export const getRecipes = () => {
   return apiAction({
     url: "/recipes",
     onSuccess: setRecipes,
     label: FETCH_RECIPES
   });
-}
+};
