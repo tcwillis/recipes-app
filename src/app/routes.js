@@ -1,4 +1,5 @@
 import Home from "views/Home";
+import Recipes from "views/Recipes";
 import NotFound from "views/NotFound";
 
 export default [
@@ -6,6 +7,11 @@ export default [
     path: "/",
     exact: true,
     component: Home
+  },
+  {
+    path: "/recipes",
+    exact: true,
+    component: Recipes
   },
   {
     path: "*",

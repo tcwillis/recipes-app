@@ -3,6 +3,7 @@ import Header from "library/Header";
 import Footer from "library/Footer";
 import { Container } from "react-bootstrap";
 import classnames from "classnames";
+import "./Layout.scss";
 
 const Layout = ({ children, className }) => {
   return (

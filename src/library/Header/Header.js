@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <Navbar className="nav" data-ref={"header"}>
       <Container>
-        <Navbar.Brand href="#" className="px-2">
+        <Navbar.Brand href="/" className="px-2">
           <img width="230" alt="logo" src={logo} />
         </Navbar.Brand>
       </Container>
