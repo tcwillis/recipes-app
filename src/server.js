@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const router = express.Router();
+const mockRecipes = require("./mocks/recipes.json");
 
 app.use(express.static(path.join(__dirname, "build")));
 
@@ -10,8 +11,7 @@ app.get("/status", function(req, res) {
 });
 
 router.route("/recipes").get(function(req, res) {
-  const recipes = ["recipe1", "recipe2", "recipe3"];
-  res.json(recipes);
+  res.json(mockRecipes);
 });
 
 app.get("/", function(req, res) {
