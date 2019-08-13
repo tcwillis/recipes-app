@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import Layout from "components/Layout";
+import Grid from "components/Grid";
+import Tile from "components/Tile";
 
 class Recipes extends Component {
   componentDidMount() {
@@ -19,7 +21,11 @@ class Recipes extends Component {
         ) : (
           <Fragment>
             {hasError && <div>{errorMessage}</div>}
-            {JSON.stringify(recipes)}
+            <Grid>
+              {recipes.map(recipe => (
+                <Tile {...recipe} />
+              ))}
+            </Grid>
           </Fragment>
         )}
       </Layout>

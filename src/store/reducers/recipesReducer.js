@@ -14,7 +14,7 @@ const INITIAL_STATE = {
 function recipes(state = INITIAL_STATE, action) {
   switch (action.type) {
     case SET_RECIPES:
-      return { ...state, list: action.payload };
+      return { ...state, ...action.payload };
     case API_START:
       if (action.payload === FETCH_RECIPES) {
         return {
