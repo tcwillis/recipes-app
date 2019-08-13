@@ -8,6 +8,8 @@
 - Consider ejecting [Create React App] for greater control over Webpack configuration, linting, etc
 - Ditch [React Bootstrap] and re-write UI components as a sepearate library
 - Extra a theme into a separate library that can be applied to the application (e.g. styled-components)
+- Update middleware to handle checking redux state for data before dispatch
+- Fetching HOC to have reusable loader while data is being fetched
 
 ## To start the app
 

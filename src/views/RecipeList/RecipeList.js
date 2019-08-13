@@ -4,7 +4,7 @@ import Layout from "components/Layout";
 import Grid from "components/Grid";
 import Tile from "components/Tile";
 
-class Recipes extends Component {
+class RecipeList extends Component {
   componentDidMount() {
     this.props.getRecipes();
   }
@@ -14,7 +14,7 @@ class Recipes extends Component {
     const errorMessage = error ? error.message : "UNSPECIFIED ERROR";
 
     return (
-      <Layout className="recipes">
+      <Layout className="recipe-list">
         <h1>Recipes</h1>
         {isFetching ? (
           <div data-ref={"fetching"}>Fetching recipes...</div>
@@ -33,17 +33,19 @@ class Recipes extends Component {
   }
 }
 
-Recipes.propTypes = {
+RecipeList.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   error: PropTypes.object,
-  getRecipes: PropTypes.func
+  getRecipes: PropTypes.func,
+  recipes: PropTypes.array
 };
 
-Recipes.defaultProps = {
+RecipeList.defaultProps = {
   isFetching: false,
   error: {},
-  getRecipes: () => {}
+  getRecipes: () => {},
+  recipes: []
 };
 
-export { Recipes };
-export default Recipes;
+export { RecipeList };
+export default RecipeList;

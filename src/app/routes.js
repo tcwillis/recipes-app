@@ -1,5 +1,6 @@
 import Home from "views/Home";
-import Recipes from "views/Recipes";
+import RecipeList from "views/RecipeList";
+import Recipe from "views/Recipe";
 import NotFound from "views/NotFound";
 
 export default [
@@ -11,7 +12,12 @@ export default [
   {
     path: "/recipes",
     exact: true,
-    component: Recipes
+    component: RecipeList
+  },
+  {
+    path: "/recipes/:seoPath",
+    exact: true,
+    component: Recipe
   },
   {
     path: "*",

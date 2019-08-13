@@ -1,19 +1,19 @@
 import React from "react";
-import { Recipes } from "./Recipes";
+import { RecipeList } from "./RecipeList";
 import { shallow } from "enzyme";
 
-describe("<Recipes />", () => {
-  it("should render without crashing", () => {
-    shallow(<Recipes />);
+describe("<RecipeList />", () => {
+  it("should render without props", () => {
+    shallow(<RecipeList />);
   });
 
   it("should display a title", () => {
-    const wrapper = shallow(<Recipes />);
+    const wrapper = shallow(<RecipeList />);
     expect(wrapper.find("h1").text()).toEqual("Recipes");
   });
 
   it("should display a fetching message", () => {
-    const wrapper = shallow(<Recipes isFetching={true} />);
+    const wrapper = shallow(<RecipeList isFetching={true} />);
     expect(wrapper.find("[data-ref='fetching']").length).toEqual(1);
   });
 });
