@@ -9,6 +9,6 @@ describe("<NotFound />", () => {
 
   it("should display a message", () => {
     const wrapper = shallow(<NotFound />);
-    expect(wrapper.find("h1").text()).toEqual("404 page not found");
+    expect(wrapper.find("h1").text()).toEqual("Page not found");
   });
 });
