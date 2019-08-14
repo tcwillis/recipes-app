@@ -10,6 +10,9 @@
 - Extra a theme into a separate library that can be applied to the application (e.g. styled-components)
 - Update middleware to handle checking redux state for data before dispatch
 - Fetching HOC to have reusable loader while data is being fetched
+- Implement [jest-fetch-mock] to mock all fetches
+- Add logger middleware
+- Unit tests for apiActions and transform
 
 ## To start the app
 

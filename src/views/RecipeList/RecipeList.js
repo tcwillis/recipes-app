@@ -6,7 +6,7 @@ import Tile from "components/Tile";
 
 class RecipeList extends Component {
   componentDidMount() {
-    this.props.getRecipes();
+    this.props.fetchRecipesIfNeeded();
   }
   render() {
     const { error, recipes, isFetching } = this.props;
@@ -23,7 +23,7 @@ class RecipeList extends Component {
             {hasError && <div>{errorMessage}</div>}
             <Grid>
               {recipes.map(recipe => (
-                <Tile {...recipe} />
+                <Tile key={recipe.id} {...recipe} />
               ))}
             </Grid>
           </Fragment>
@@ -34,16 +34,16 @@ class RecipeList extends Component {
 }
 
 RecipeList.propTypes = {
-  isFetching: PropTypes.bool.isRequired,
+  isFetching: PropTypes.bool,
   error: PropTypes.object,
-  getRecipes: PropTypes.func,
+  fetchRecipesIfNeeded: PropTypes.func,
   recipes: PropTypes.array
 };
 
 RecipeList.defaultProps = {
   isFetching: false,
   error: {},
-  getRecipes: () => {},
+  fetchRecipesIfNeeded: () => {},
   recipes: []
 };
 

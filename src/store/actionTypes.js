@@ -1,7 +1,6 @@
-export const FETCH_RECIPES = "FETCH_RECIPES";
-export const SET_RECIPES = "SET_RECIPES";
+export const API_ACTION = "API_ACTION";
 
-export const API = "API";
-export const API_START = "API_START";
-export const API_END = "API_END";
-export const API_ERROR = "API_ERROR";
+export const RECIPES = "RECIPES";
+export const RECIPES_REQUESTED = "RECIPES_REQUESTED";
+export const RECIPES_RECEIVED = "RECIPES_RECEIVED";
+export const RECIPES_FAILED = "RECIPES_FAILED";

@@ -1,15 +1,27 @@
-import { SET_RECIPES, FETCH_RECIPES } from "../actionTypes";
+import { RECIPES } from "../actionTypes";
 import { apiAction } from "./apiActions";
-import { transformResponse } from "../../utils/transform";
 
-export const setRecipes = recipes => ({
-  type: SET_RECIPES,
-  payload: { list: transformResponse({ data: recipes, type: "recipes" }) }
-});
-
-export const getRecipes = () =>
+const getRecipes = () =>
   apiAction({
-    url: "/recipes",
-    onSuccess: setRecipes,
-    label: FETCH_RECIPES
+    type: RECIPES,
+    endpoint: "/recipes"
   });
+
+const shouldFetchRecipes = state => {
+  const recipes = state.recipes.list;
+  if (recipes.isFetchingData) {
+    return false;
+  } else if (!recipes || recipes.length === 0) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+export const fetchRecipesIfNeeded = () => {
+  return (dispatch, getState) => {
+    if (shouldFetchRecipes(getState())) {
+      return dispatch(getRecipes());
+    }
+  };
+};

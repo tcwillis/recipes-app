@@ -1,36 +1,36 @@
 import {
-  SET_RECIPES,
-  API_START,
-  FETCH_RECIPES,
-  API_END
+  RECIPES_RECEIVED,
+  RECIPES_REQUESTED,
+  RECIPES_FAILED
 } from "store/actionTypes";
+import { transformRecipes } from "../../utils/transform";
 
 const INITIAL_STATE = {
   list: [],
   error: null,
-  isFetchingData: null
+  isFetchingData: false
 };
 
 function recipes(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case SET_RECIPES:
-      return { ...state, ...action.payload };
-    case API_START:
-      if (action.payload === FETCH_RECIPES) {
-        return {
-          ...state,
-          isFetchingData: true
-        };
-      }
-      break;
-    case API_END:
-      if (action.payload === FETCH_RECIPES) {
-        return {
-          ...state,
-          isFetchingData: false
-        };
-      }
-      break;
+    case RECIPES_RECEIVED:
+      return {
+        ...state,
+        list: transformRecipes(action.payload),
+        isFetchingData: false
+      };
+    case RECIPES_REQUESTED:
+      return {
+        ...state,
+        isFetchingData: true
+      };
+    case RECIPES_FAILED:
+      return {
+        ...state,
+        isFetchingData: false,
+        error: action.payload
+      };
+
     default:
       return state;
   }

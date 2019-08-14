@@ -2,7 +2,7 @@
 import { compose } from "recompose";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { getRecipes } from "../actions/recipesActions";
+import { fetchRecipesIfNeeded } from "../actions/recipesActions";
 import lodashGet from "lodash.get";
 
 const mapStateToProps = state => ({
@@ -14,7 +14,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      getRecipes
+      fetchRecipesIfNeeded
     },
     dispatch
   );
