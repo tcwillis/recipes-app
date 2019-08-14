@@ -4,12 +4,12 @@ import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Tile.scss";
 
-const Tile = ({ imageMobile, image, title, shortUrl }) => (
+const Tile = ({ mobileImage, image, title, shortUrl }) => (
   <Link to={shortUrl} className="tile">
     <Card>
       <picture data-ref={"tile-image"}>
         <source srcSet={image} media="(min-width: 640px)" />
-        <img src={imageMobile} alt={`${title}`} />
+        <img src={mobileImage} alt={`${title}`} />
       </picture>
       <Card.Title data-ref={"tile-title"} className={"tile-title mb-0"}>
         {title}
@@ -19,7 +19,7 @@ const Tile = ({ imageMobile, image, title, shortUrl }) => (
 );
 
 Tile.propTypes = {
-  imageMobile: PropTypes.string,
+  mobileImage: PropTypes.string,
   image: PropTypes.string,
   title: PropTypes.string,
   shortUrl: PropTypes.string

@@ -7,7 +7,7 @@ export const transformRecipes = data => {
       id: article.contentId,
       title: article.title,
       shortUrl: "/recipes/" + article.urlPartial,
-      imageMobile: lodashGet(article, "imageList.landscapemobile1x.url"),
+      mobileImage: lodashGet(article, "imageList.landscapemobile1x.url"),
       image: lodashGet(article, "imageList.landscapewidedesktop1x.url")
     }));
   if (recipes && recipes.length > 0) {

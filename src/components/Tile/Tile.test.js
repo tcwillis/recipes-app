@@ -6,40 +6,40 @@ describe("Tile", () => {
   it("renders without props", () => {
     shallow(<Tile />);
   });
+
   let tile;
-  const defaultProps = {
+
+  const props = {
     id: "1",
-    mobileImage: "http://images.com.au/image.gif",
-    desktopImage: "http://images.com.au/image.gif"
+    mobileImage: "http://images.com.au/mobile.gif",
+    image: "http://images.com.au/image.gif",
+    title: "My Title",
+    shortUrl: "/my-url"
   };
 
   beforeEach(() => {
-    tile = shallow(<Tile {...defaultProps} />);
+    tile = shallow(<Tile {...props} />);
   });
 
-  // it("should show the destkop image", () => {
-  //   const itemImage = item.find('[data-ref="item-image"]');
-  //   expect(itemImage.length).toEqual(1);
-  //   expect(itemImage.prop("src")).toEqual(defaultProps.image);
-  // });
+  it("should show the image", () => {
+    const tileImage = tile.find('[data-ref="tile-image"] source');
+    expect(tileImage.length).toEqual(1);
+    expect(tileImage.prop("srcSet")).toEqual(props.image);
+  });
 
-  // it("should show the price", () => {
-  //   const itemPrice = item.find('[data-ref="item-price"]');
-  //   expect(itemPrice.length).toEqual(1);
-  //   expect(itemPrice.text()).toEqual(defaultProps.price);
-  // });
+  it("should show the mobile image", () => {
+    const tileMobileImage = tile.find('[data-ref="tile-image"] img');
+    expect(tileMobileImage.length).toEqual(1);
+    expect(tileMobileImage.prop("src")).toEqual(props.mobileImage);
+  });
 
-  // it("should call onClick when the button is clicked", () => {
-  //   const itemButton = item.find('[data-ref="item-button"]');
-  //   expect(itemButton.length).toEqual(1);
-  //   itemButton.simulate("click");
-  //   expect(buttonClickStub.mock.calls.length).toBe(1);
-  //   expect(buttonClickStub.mock.calls[0][0]).toBe("1");
-  // });
+  it("should show a link", () => {
+    const tileLink = tile.find(".tile");
+    expect(tileLink.prop("to")).toEqual(props.shortUrl);
+  });
 
-  // it("should not show a button if the saved flag is 'true'", () => {
-  //   const savedItem = shallow(<Item {...defaultProps} saved={true} />);
-  //   expect(savedItem.find('[data-ref="item-button"]').length).toEqual(0);
-  //   expect(savedItem.props().className).toEqual("item saved");
-  // });
+  it("should show a title", () => {
+    const tileTitle = tile.find('[data-ref="tile-title"]');
+    expect(tileTitle.text()).toEqual(props.title);
+  });
 });

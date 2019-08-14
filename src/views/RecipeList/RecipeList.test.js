@@ -16,4 +16,10 @@ describe("<RecipeList />", () => {
     const wrapper = shallow(<RecipeList isFetching={true} />);
     expect(wrapper.find("[data-ref='fetching']").length).toEqual(1);
   });
+
+  it("should display a list of recipes", () => {
+    const recipes = [{ id: 1 }, { id: 2 }];
+    const wrapper = shallow(<RecipeList recipes={recipes} />);
+    expect(wrapper.find("Tile").length).toEqual(2);
+  });
 });
