@@ -1,5 +1,6 @@
 import { RECIPES } from "../actionTypes";
 import { apiAction } from "./apiActions";
+import lodashGet from "lodash.get";
 
 const getRecipes = () =>
   apiAction({
@@ -8,8 +9,8 @@ const getRecipes = () =>
   });
 
 const shouldFetchRecipes = state => {
-  const recipes = state.recipes.list;
-  if (recipes.isFetchingData) {
+  const recipes = lodashGet(state, "recipes.list");
+  if (recipes && recipes.isFetchingData) {
     return false;
   } else if (!recipes || recipes.length === 0) {
     return true;
