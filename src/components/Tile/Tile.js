@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import "./Tile.scss";
 
 const Tile = ({ mobileImage, image, title, shortUrl }) => (
-  <Link to={shortUrl} className="tile">
-    <Card>
+  <Card>
+    <Link to={shortUrl} className="tile">
       <picture data-ref={"tile-image"}>
         <source srcSet={image} media="(min-width: 640px)" />
         <img src={mobileImage} alt={`${title}`} />
@@ -14,8 +14,8 @@ const Tile = ({ mobileImage, image, title, shortUrl }) => (
       <Card.Title data-ref={"tile-title"} className={"tile-title mb-0"}>
         {title}
       </Card.Title>
-    </Card>
-  </Link>
+    </Link>
+  </Card>
 );
 
 Tile.propTypes = {

@@ -19,6 +19,7 @@
 - Consider ejecting [Create React App] for greater control over Webpack configuration, linting, etc
 - Ditch [React Bootstrap] and re-write UI components as a sepearate repo
 - Define a theme in the component library that can be applied to the application (e.g. styled-components, theme provider)
+- Define appropriate breakpoints in theme for mobile, tablet, desktop, etc
 - Update middleware to handle checking redux state for data before dispatch
 - Fetching HOC to have reusable loader while data is being fetched
 - Implement [jest-fetch-mock] to mock all fetches
